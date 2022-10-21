@@ -27,16 +27,16 @@ export default function Header() {
                 </div>
                 
                 <div className={styles.links}>
-                    <Link href={"products"}>
+                    <Link href={"/products"}>
                         <p>Products</p>
                     </Link>
-                    <Link href={"about"}>
+                    <Link href={"/about"}>
                         <p>About Us</p>
                     </Link>
-                    <Link href={"contact"}>
+                    <Link href={"/contact"}>
                         <p>Contact</p>
                     </Link>
-                    <Link href={"findUs"}>
+                    <Link href={"/findUs"}>
                         <p>Find Us</p>
                     </Link>
                 </div>
@@ -47,7 +47,7 @@ export default function Header() {
 
                 {showMenu && 
                     <div className={styles.responsiveMenu}>                        
-                        <p onClick={() => goTo("products")}>Products</p>
+                        <p onClick={() => goTo("/products")}>Products</p>
                         <p onClick={() => goTo("/about")}>About Us</p>
                         <p onClick={() => goTo("/contact")}>Contact</p>
                         <p onClick={() => goTo("/findUs")}>Find Us</p>
