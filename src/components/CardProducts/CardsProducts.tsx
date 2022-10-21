@@ -31,7 +31,7 @@ export default function CardsProducts() {
         <>
         <section className={styles.topProducts}>
             {
-                products.map((item, index) => {
+                products.map((item: any, index: any) => {
                     return (
                         <Link key={index} href={`products/${item.id}`}>
                             <div className={styles.products} key={index}>
