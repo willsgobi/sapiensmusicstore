@@ -11,7 +11,7 @@ export default function Header() {
 
     function goTo(url: string) {
         router.back()
-        router.push(window.location.origin + url)
+        document.location.href = window.location.origin + url;        
     }
 
     return (        
