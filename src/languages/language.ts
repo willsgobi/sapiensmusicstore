@@ -4,13 +4,13 @@ export default function Text(text: string, culture: Culture) {
 
     const culturesTexts = {
         "pt-br": {
-            "about": `Este é um site desenvolvido por mim com o intuito de obter mais conhecimento com a linguagem NextJS e também deixar um site bem útil como portifólio e futuros projetos que venho a desenvolver.\
-            Apaixonado por tecnologia e música, resolvi criar esta vitrine virtual de uma loja de música.\
-            Agradeço o interesse em conhecer meu site!Este é um site desenvolvido por mim com o intuito de obter mais conhecimento com a linguagem NextJS e também deixar um site bem útil como portifólio e futuros projetos que venho a desenvolver.\
-            Apaixonado por tecnologia e música, resolvi criar esta vitrine virtual de uma loja de música.\
-            Agradeço o interesse em conhecer meu site!\
-            Maecenas porta risus diam, sed pellentesque nisi egestas eget. Nullam eu tortor lectus. Ut vehicula purus eget aliquet consectetur. Mauris ornare nunc a cursus commodo. Donec tempor scelerisque sapien sit amet auctor. Pellentesque in fringilla metus, ut malesuada dolor.\
-            Fusce elementum at orci quis gravida. Morbi fermentum tortor sit amet metus varius hendrerit. Sed finibus, urna in ultricies scelerisque, est neque euismod urna, nec varius magna purus et nibh. \
+            "about": `Este é um site desenvolvido por mim com o intuito de obter mais conhecimento com a linguagem NextJS e também deixar um site bem útil como portifólio e futuros projetos que venho a desenvolver.\n
+            Apaixonado por tecnologia e música, resolvi criar esta vitrine virtual de uma loja de música.\n
+            Agradeço o interesse em conhecer meu site!Este é um site desenvolvido por mim com o intuito de obter mais conhecimento com a linguagem NextJS e também deixar um site bem útil como portifólio e futuros projetos que venho a desenvolver.\n
+            Apaixonado por tecnologia e música, resolvi criar esta vitrine virtual de uma loja de música.\n
+            Agradeço o interesse em conhecer meu site!\n
+            Maecenas porta risus diam, sed pellentesque nisi egestas eget. Nullam eu tortor lectus. Ut vehicula purus eget aliquet consectetur. Mauris ornare nunc a cursus commodo. Donec tempor scelerisque sapien sit amet auctor. Pellentesque in fringilla metus, ut malesuada dolor.\n
+            Fusce elementum at orci quis gravida. Morbi fermentum tortor sit amet metus varius hendrerit. Sed finibus, urna in ultricies scelerisque, est neque euismod urna, nec varius magna purus et nibh. \n
             Pellentesque tortor lorem, tincidunt at pharetra eget, rhoncus quis enim. Donec eleifend, metus ac vulputate ullamcorper, lacus lacus auctor eros, quis accumsan tellus lorem sit amet lectus. Nulla fermentum, est sed tempor scelerisque, arcu erat egestas lectus, eget bibendum mi nunc nec neque. Phasellus sit amet mollis arcu, venenatis eleifend metus. Vivamus varius purus a volutpat consequat. Donec et interdum nulla.`,
             "placeholder_name": "Digite seu nome",
             "placeholder_email": "Digite seu email",

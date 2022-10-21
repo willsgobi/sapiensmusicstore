@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react"
 import Content from "../Content/Content"
@@ -51,7 +52,7 @@ export default function ProductDetails(props: ProductDetailsProps) {
                                         product.images.map((item: string, index: number) => {
                                             return (
                                                 <div key={index} className={styles.thumbail} onClick={() => setSelectedImage(item)}>
-                                                    <img src={item} alt={item + index} />
+                                                    <Image src={item} alt={item + index} layout='fill' />
                                                 </div>
                                             )
                                         })

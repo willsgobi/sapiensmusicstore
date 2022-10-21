@@ -14,7 +14,7 @@ export default function Banner() {
     ];
 
     function getImageBanner() {
-        return <img id="imageBanner" src={imageListBanner[currentIndex]} alt="banner" className={styles.imageBanner} />           
+        return <Image id="imageBanner" src={imageListBanner[currentIndex]} alt="banner" layout='fill' className={styles.imageBanner} />           
     }
 
     useEffect(() => {

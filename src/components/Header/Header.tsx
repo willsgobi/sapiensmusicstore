@@ -13,7 +13,7 @@ export default function Header() {
                 <div>
                     <Link href={"/"}>
                         <div>
-                            <Image src={"/images/logo.png"} width="50" height="50" style={{cursor: "pointer"}}/>  
+                            <Image src={"/images/logo.png"} alt="Logo image" width="50" height="50" style={{cursor: "pointer"}}/>  
                             <h2>Sapiens Music Store</h2>
                         </div>
                     </Link>

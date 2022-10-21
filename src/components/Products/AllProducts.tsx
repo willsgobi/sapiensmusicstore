@@ -86,11 +86,11 @@ export default function AllProducts() {
                     <h5>Category:</h5>
                     <div className={styles.filterTag}>
                         {
-                            categories && categories.map((item, index) => {
+                            categories && categories.map((item: any, index: any) => {
                                 return (
-                                <>
-                                    <span key={index} onClick={() => filterProducts(item.id, "category")}>{item.name}</span>
-                                </>)
+                                <div key={index}>
+                                    <span onClick={() => filterProducts(item.id, "category")}>{item.name}</span>
+                                </div>)
                             })
                         }
                         <span onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
@@ -100,9 +100,9 @@ export default function AllProducts() {
                         {
                             brands && brands.map((item, index) => {
                                 return (
-                                <>
-                                    <span key={index} onClick={() => filterProducts(item.id, "brand")}>{item.name}</span>
-                                </>)
+                                <div key={index}>
+                                    <span onClick={() => filterProducts(item.id, "brand")}>{item.name}</span>
+                                </div>)
                             })
                         }
                         <span onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
@@ -114,7 +114,7 @@ export default function AllProducts() {
             {
                     productsList.map((item: any, index: number) => {
                         return (
-                            <Link href={`products/${item.id}`}>
+                            <Link key={index} href={`products/${item.id}`}>
                             <div className={styles.products} key={index}>
                                 <div className={styles.imageContent}>
                                     <img src={item.images[0]}/>

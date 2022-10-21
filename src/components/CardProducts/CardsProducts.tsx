@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Image from 'next/image'
 import styles from './CardsProducts.module.scss'
 
 export default function CardsProducts() {
@@ -36,7 +37,7 @@ export default function CardsProducts() {
                         <Link key={index} href={`products/${item.id}`}>
                             <div className={styles.products} key={index}>
                                 <div className={styles.imageContent}>
-                                    <img src={item.images[0]}/>
+                                    <Image alt="Product images" src={item.images[0]} layout='fill'/>
                                 </div>
                                 <p>{item.name}</p>
                                 <b>$ {item.price.toFixed("2")}</b>

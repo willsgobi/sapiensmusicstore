@@ -5,7 +5,7 @@ let imagePathTama = "/images/tama/"
 let imagePathMogami = "/images/mogami/"
 let imagePathEpiphone = "/images/epiphone/"
 
-export default [
+let productsMock = [
     {
         "id": 1,
         "name": "American Professional II Stratocaster®",
@@ -231,3 +231,5 @@ export default [
         ]
     },
 ]
+
+export default productsMock
