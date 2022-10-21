@@ -52,7 +52,7 @@ export default function ProductDetails(props: ProductDetailsProps) {
                                         product.images.map((item: string, index: number) => {
                                             return (
                                                 <div key={index} className={styles.thumbail} onClick={() => setSelectedImage(item)}>
-                                                    <Image src={item} alt={item + index} layout='fill' />
+                                                    <img src={item} alt={item + index} />
                                                 </div>
                                             )
                                         })

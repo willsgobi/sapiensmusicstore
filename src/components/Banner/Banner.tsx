@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Image from 'next/image'
 import styles from './Banner.module.scss'
 import Link from "next/link";
 
@@ -14,7 +13,7 @@ export default function Banner() {
     ];
 
     function getImageBanner() {
-        return <Image id="imageBanner" src={imageListBanner[currentIndex]} alt="banner" layout='fill' className={styles.imageBanner} />           
+        return <img id="imageBanner" src={imageListBanner[currentIndex]} alt="banner" className={styles.imageBanner} />           
     }
 
     useEffect(() => {
