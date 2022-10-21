@@ -1,0 +1,131 @@
+.header {
+    padding: 10px 200px;
+    background-color: #fcfcfc;
+    box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: .2);
+    position: sticky;
+    top: 0;
+    z-index: 12;
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div {            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                margin-left: 15px;
+                cursor: pointer;
+                transition: .5s;
+                border-bottom: 1px solid transparent;
+                padding: 5px;
+                
+                &:hover {
+                    border-bottom-color: #333;
+                }
+            }
+
+            h2 {
+                cursor: pointer;
+                margin-left: 10px;
+                font-family: 'Pacifico', cursive;
+            }
+        }
+    }
+}
+
+.header nav .menuMobile {
+    display: none;
+    position: relative;
+}
+
+.responsiveMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #fcfcfc;
+    box-shadow: 2px 5px 6px rgba($color: #000000, $alpha: .6);
+    position: absolute;
+    top: 30px;
+    left: 0;
+    transition: .3s;
+    animation: shows .3s ease-in-out forwards;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+    .header {
+        padding: 10px 20px;
+    }
+  }
+
+@media (max-width: 700px) {
+    .header nav .links {
+        display: none;
+    }
+
+    .header nav .menuMobile {
+        display: flex;
+        width: 45px;
+        height: 45px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+        .line {
+            width: 30px;
+            height: 2px;
+            background-color: #333;
+            box-shadow: 0px 8px rgba($color: #000000, $alpha: 1.0);
+            position: relative;
+            transition: .4s;            
+
+            &::after {
+                content: "";
+                width: 30px;
+                height: 2px;
+                background-color: #333;
+                box-shadow: 0px -8px rgba($color: #000000, $alpha: 1.0);
+            }            
+        }
+        
+        .close {
+            width: 30px;
+            height: 2px;
+            background-color: #333;
+            position: relative;
+            transition: .4s;
+            transform: rotate(135deg);
+
+            &::after {
+                content: "";
+                width: 30px;
+                height: 2px;
+                background-color: #333;
+                transform: rotate(-85deg);
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) { 
+    .header nav div h2 {
+        font-size: 1rem;
+    }
+}
+
+@keyframes shows {
+    from {
+        top: 30px;
+        opacity: 0;
+    } 
+    to{
+        top: 70px;
+        opacity: 1;
+    }
+}
