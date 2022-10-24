@@ -8,7 +8,7 @@ import Content from "../Content/Content"
 import styles from './ProductDetails.module.scss'
 
 interface ProductDetailsProps {
-    id: string | number
+    id: any
 }
 
 export default function ProductDetails(props: ProductDetailsProps) {
@@ -20,14 +20,23 @@ export default function ProductDetails(props: ProductDetailsProps) {
     const [[x, y], setXY] = useState([0, 0]);
     const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
     const [showMagnifier, setShowMagnifier] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
     async function getProductById() {
         try {
             const response = await fetch(`/api/productsById?id=${props.id}`)
+
             const json = await response.json();
 
-            setProduct(json);
-            setSelectedImage(json.images[0])
+            if(response.status === 200) {
+                console.log("sdsdsdsdsd")
+                console.log(response.status)
+                setProduct(json);
+                setSelectedImage(json.images[0])
+            } else {
+                setErrorMessage(json.error_message)
+            }
+            
         } catch (e) {
             console.log(e.message)
         } finally {
@@ -133,60 +142,55 @@ export default function ProductDetails(props: ProductDetailsProps) {
     return (
         <Content id="productDetails">
             {
-                product && (
+                product ? (
                     <div className={styles.contentDetails}>
                         <Head>
-                            <title>{product.name} | Sapiens Music Store</title>
-                        </Head>
-                        <h3>| {product.name}</h3>
-                        <p className={styles.color}>Color: {product.color}</p>
-                        <div className={styles.sectionDetails}>
-                            <div className={styles.images}>
-                                <div className={styles.thumbailsImage}>
+                                    <title>{product.name} | Sapiens Music Store</title>
+                                </Head>
+                                <h3>| {product.name}</h3>
+                                <p className={styles.color}>Color: {product.color}</p>
+                                <div className={styles.sectionDetails}>
+                                    <div className={styles.images}>
+                                        <div className={styles.thumbailsImage}>
+                                            {
+                                                product.images.map((item: string, index: number) => {
+                                                    return (
+                                                        <div key={index} className={styles.thumbail} onClick={() => setSelectedImage(item)}>
+                                                            <img src={item} alt={item + index} />                                                    
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        {
+                                            ImageMagnifier({src: selectedImage})
+                                        }                                
+                                    </div>
+                                    <div className={styles.buy}>
+                                        <p className={styles.price}>$ {product.price.toFixed(2)}</p>
+                                        <button className={styles.buyNow}>Buy now</button>
+                                        <button className={styles.wishList}>Add to wishlist</button>
+                                    </div>
+                                </div>
+                                <h3>| Description:</h3>
+                                <div className={styles.descriptions}>
                                     {
-                                        product.images.map((item: string, index: number) => {
-                                            return (
-                                                <div key={index} className={styles.thumbail} onClick={() => setSelectedImage(item)}>
-                                                    <img src={item} alt={item + index} />                                                    
-                                                </div>
-                                            )
+                                        product.spec.map((item, index) => {
+                                            return <p key={index}>{item}</p>
                                         })
                                     }
-                                </div>
-                                {
-                                    ImageMagnifier({src: selectedImage})
-                                }                                
-                            </div>
-                            <div className={styles.buy}>
-                                <p className={styles.price}>$ {product.price.toFixed(2)}</p>
-                                <button className={styles.buyNow}>Buy now</button>
-                                <button className={styles.wishList}>Add to wishlist</button>
-                            </div>
-                        </div>
-                        <h3>| Description:</h3>
-                        <div className={styles.descriptions}>
-                            {
-                                product.spec.map((item, index) => {
-                                    return <p key={index}>{item}</p>
-                                })
-                            }
-                        </div>
+                                </div>                      
 
                         <Link href={"/products"}>
                             <span className={styles.backToList}>Back to list</span>
-                        </Link>
-
-                        {
-                            showFullImage && (
-                                <div className={styles.fullImage}>
-                                    <div className={styles.fullImageClose} onClick={() => {
-                                        document.body.style.overflow = "scroll";
-                                        setShowFullImage(false)
-                                    }}></div>
-                                    <img src={selectedImage} alt="Image Selected" />
-                                </div>
-                            )
-                        }
+                        </Link>                        
+                    </div>
+                ) : (
+                    <div className={styles.contentDetails}>
+                        <p className={styles.errorMessage}>{errorMessage}</p>
+                        <Link href={"/products"}>
+                            <span className={styles.backToList}>Back to list</span>
+                        </Link> 
                     </div>
                 )
             }

@@ -1,9 +1,13 @@
+import Head from "next/head";
 import Content from "../Content/Content";
 
 export default function FindUs() {
     return (
         <Content id="findUs">
             <>
+                <Head>
+                    <title>Find Us | Sapiens Music Store</title>
+                </Head>
                 <h2>| Find Us</h2>
                 <h3>Heads up! This is a fictitious address, just to demonstrate what a site in production would look like!</h3>
             

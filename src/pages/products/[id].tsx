@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import { useEffect } from "react"
 import ProductDetails from "../../components/ProductDetails/ProductDetails"
 
 export default function Product() {
@@ -7,5 +8,5 @@ export default function Product() {
 
     if(params.id == undefined) return
 
-    return <ProductDetails id={params.id[0]}/>
+    return <ProductDetails id={params.id}/>
 }

@@ -3,8 +3,7 @@ import productList from "./productList"
 export default function productsByCategory(req, res) {
   var { id } = req.query;
 
-  var product = productList.find(c => c.id == id);
-
+  var product = productList.find(c => c.id == Number(id));
   if(product != null) {
     res.status(200).json(product)
   } else {
