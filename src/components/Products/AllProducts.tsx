@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Content from '../Content/Content'
+import ProductCard from '../ProductCard/ProductCard';
 import styles from './AllProducts.module.scss'
 
 export default function AllProducts() {
@@ -46,7 +47,6 @@ export default function AllProducts() {
             setProducts(json)
             setProductsList(json)
         } catch(e) {
-            console.log(e.message)
         } finally {
             setLoading(false)
         }
@@ -114,15 +114,7 @@ export default function AllProducts() {
             {
                     productsList.map((item: any, index: number) => {
                         return (
-                            <Link key={index} href={`products/${item.id}`}>
-                            <div className={styles.products} key={index}>
-                                <div className={styles.imageContent}>
-                                    <img src={item.images[0]}/>
-                                </div>
-                                <p>{item.name}</p>
-                                <b>$ {item.price.toFixed("2")}</b>
-                            </div>
-                            </Link>
+                            <ProductCard index={index} item={item} />
                         )
                     })    
                 } 

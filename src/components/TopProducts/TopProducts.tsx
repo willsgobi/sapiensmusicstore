@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import styles from './CardsProducts.module.scss'
+import ProductCard from '../ProductCard/ProductCard';
+import styles from './TopProducts.module.scss'
 
-export default function CardsProducts() {
+export default function TopProducts() {
 
     const [products, setProducts] = useState<any>(null)
     const [loading, setLoading] = useState<boolean>(true)
@@ -33,15 +34,7 @@ export default function CardsProducts() {
             {
                 products.map((item: any, index: any) => {
                     return (
-                        <Link key={index} href={`products/${item.id}`}>
-                            <div className={styles.products} key={index}>
-                                <div className={styles.imageContent}>
-                                    <img alt="Product images" src={item.images[0]} />
-                                </div>
-                                <p>{item.name}</p>
-                                <b>$ {item.price.toFixed("2")}</b>
-                            </div>
-                        </Link>
+                        <ProductCard index={index} item={item} />
                     )
                 })    
             }            

@@ -3,7 +3,6 @@ import productList from './productList';
 
 export default function products(req, res) {
   var { maxLength, dynamic } = req.query
-  console.log(maxLength)
 
   if(dynamic != null) {
     let shuffled = productList

@@ -6,7 +6,6 @@ export default function ContactPage() {
 
     async function sendContact() {
         event.preventDefault();
-        console.log("sent")
     }
 
     return (

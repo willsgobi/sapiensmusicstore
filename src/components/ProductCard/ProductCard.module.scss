@@ -1,21 +1,3 @@
-.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.topProducts {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 15px 20px;
-    
-    > div {
-        width: 300px;
-    }
-}
-
 .products {
     display: flex;
     align-items: flex-start;
@@ -57,14 +39,5 @@
     &:hover {
         transform: scale(1.2);
     }
-    }
-}
-
-.allProducts {
-    cursor: pointer;
-    transition: .3s;
-
-    &:hover {
-        color: black;
     }
 }
