@@ -16,6 +16,9 @@ export default function ProductDetails(props: ProductDetailsProps) {
     const [loading, setLoading] = useState<boolean>(true);
     const [selectedImage, setSelectedImage] = useState<string>();
     const [showFullImage, setShowFullImage] = useState<boolean>();
+    const [[x, y], setXY] = useState([0, 0]);
+    const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
+    const [showMagnifier, setShowMagnifier] = useState(false);
 
     async function getProductById() {
         try {
@@ -30,6 +33,91 @@ export default function ProductDetails(props: ProductDetailsProps) {
             setLoading(false)
         }
     }
+
+    function ImageMagnifier({
+        src,
+        width,
+        height,
+        magnifierHeight = 200,
+        magnifieWidth = 200,
+        zoomLevel = 1.5
+      }: {
+        src: string;
+        width?: string;
+        height?: string;
+        magnifierHeight?: number;
+        magnifieWidth?: number;
+        zoomLevel?: number;
+      }) {
+        
+        return (
+          <div
+            className={styles.selectedImage}
+            style={{
+              position: "relative",
+              height: height,
+              width: width
+            }}
+          >
+            <img
+              src={src}
+              style={{ height: height, width: width }}
+              onMouseEnter={(e) => {
+                // update image size and turn-on magnifier
+                const elem = e.currentTarget;
+                const { width, height } = elem.getBoundingClientRect();
+                setSize([width, height]);
+                setShowMagnifier(true);
+              }}
+              onMouseMove={(e) => {
+                // update cursor position
+                const elem = e.currentTarget;
+                const { top, left } = elem.getBoundingClientRect();
+      
+                // calculate cursor position on the image
+                const x = e.pageX - left - window.pageXOffset;
+                const y = e.pageY - top - window.pageYOffset;
+                setXY([x, y]);
+              }}
+              onMouseLeave={() => {
+                // close magnifier
+                setShowMagnifier(false);
+              }}
+              alt={"img"}
+            />
+      
+            <div
+              style={{
+                display: showMagnifier ? "" : "none",
+                position: "absolute",
+      
+                // prevent magnifier blocks the mousemove event of img
+                pointerEvents: "none",
+                // set size of magnifier
+                height: `${magnifierHeight}px`,
+                width: `${magnifieWidth}px`,
+                // move element center to cursor pos
+                top: `${y - magnifierHeight / 2}px`,
+                left: `${x - magnifieWidth / 2}px`,
+                opacity: "1", // reduce opacity so you can verify position
+                border: "1px solid lightgray",
+                backgroundColor: "white",
+                backgroundImage: `url('${src}')`,
+                backgroundRepeat: "no-repeat",
+      
+                //calculate zoomed image size
+                backgroundSize: `${imgWidth * zoomLevel}px ${
+                  imgHeight * zoomLevel
+                }px`,
+      
+                //calculate position of zoomed image.
+                backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
+                backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
+              }}
+            ></div>
+          </div>
+        );
+      }
 
     useEffect(() => {
         getProductById();
@@ -55,18 +143,15 @@ export default function ProductDetails(props: ProductDetailsProps) {
                                         product.images.map((item: string, index: number) => {
                                             return (
                                                 <div key={index} className={styles.thumbail} onClick={() => setSelectedImage(item)}>
-                                                    <img src={item} alt={item + index} />
+                                                    <img src={item} alt={item + index} />                                                    
                                                 </div>
                                             )
                                         })
                                     }
                                 </div>
-                                <div className={styles.selectedImage} onClick={() => {
-                                    setShowFullImage(true)
-                                    document.body.style.overflow = "hidden";
-                                }}>
-                                    <img src={selectedImage} alt="product" />
-                                </div>
+                                {
+                                    ImageMagnifier({src: selectedImage})
+                                }                                
                             </div>
                             <div className={styles.buy}>
                                 <p className={styles.price}>$ {product.price.toFixed(2)}</p>

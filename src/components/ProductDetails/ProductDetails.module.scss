@@ -27,8 +27,7 @@
     height: 450px;
     width: 100%;
     position: relative;
-    margin-left: 10px;
-    box-shadow: 1px 1px 3px rgba($color: #000000, $alpha: .6);
+    margin-left: 30px;
     flex: 1;
 
     > img {        
@@ -42,64 +41,6 @@
     //         transform: scale(2) translateX(60px) translateY(-80px); 
     //     }       
     // }
-}
-
-.fullImage {
-    background-color: rgba($color: #000000, $alpha: .3);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 20px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: animationImage ease-in .5s forwards;
-    
-
-    img {
-        max-height: 80%;
-        max-width: 95%;
-        margin-top: 50px;
-        object-fit: contain;
-        touch-action: manipulation;
-    }
-}
-
-.fullImageClose {
-    cursor: pointer;
-    position: absolute;
-    right: 30px;
-    top: 100px;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: #f4f4f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 1px 2px 3px rgba($color: #000000, $alpha: .5);
-        
-    &::before {
-        content: "";
-        position: absolute;        
-        height: 5px;
-        width: 20px;
-        transform: rotate(45deg);
-        background-color: #000;
-        border-radius: 10px;
-    }
-
-    &::after {
-        content: "";
-        z-index: 100;
-        position: absolute;
-        height: 5px;
-        width: 20px;
-        transform: rotate(135deg);
-        background-color: #000;
-        border-radius: 10px;
-    }
 }
 
 .thumbailsImage {
