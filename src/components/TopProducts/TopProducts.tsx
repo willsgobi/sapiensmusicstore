@@ -34,7 +34,7 @@ export default function TopProducts() {
             {
                 products.map((item: any, index: any) => {
                     return (
-                        <ProductCard index={index} item={item} />
+                        <ProductCard key={index} index={index} item={item} />
                     )
                 })    
             }            

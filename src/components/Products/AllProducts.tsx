@@ -120,7 +120,7 @@ export default function AllProducts() {
             {
                     productsList.map((item: any, index: number) => {
                         return (
-                            <ProductCard index={index} item={item} />
+                            <ProductCard key={index} index={index} item={item} />
                         )
                     })    
                 } 
