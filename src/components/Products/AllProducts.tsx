@@ -87,10 +87,7 @@ export default function AllProducts() {
                     <div className={styles.filterTag}>
                         {
                             categories && categories.map((item: any, index: any) => {
-                                return (
-                                <div key={index}>
-                                    <span onClick={() => filterProducts(item.id, "category")}>{item.name}</span>
-                                </div>)
+                                return (<span key={index} onClick={() => filterProducts(item.id, "category")}>{item.name}</span>)
                             })
                         }
                         <span onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
@@ -98,7 +95,7 @@ export default function AllProducts() {
                     <h5>Brand:</h5>
                     <div className={styles.filterTag}>
                         {
-                            brands && brands.map((item, index) => {
+                            brands && brands.map((item: any, index: number) => {
                                 return (
                                 <div key={index}>
                                     <span onClick={() => filterProducts(item.id, "brand")}>{item.name}</span>

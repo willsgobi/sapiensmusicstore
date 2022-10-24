@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react"
@@ -134,6 +135,9 @@ export default function ProductDetails(props: ProductDetailsProps) {
             {
                 product && (
                     <div className={styles.contentDetails}>
+                        <Head>
+                            <title>{product.name}</title>
+                        </Head>
                         <h3>| {product.name}</h3>
                         <p className={styles.color}>Color: {product.color}</p>
                         <div className={styles.sectionDetails}>
