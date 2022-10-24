@@ -136,7 +136,7 @@ export default function ProductDetails(props: ProductDetailsProps) {
                 product && (
                     <div className={styles.contentDetails}>
                         <Head>
-                            <title>{product.name ?? "Sapiens Music Store"}</title>
+                            <title>{product.name} | Sapiens Music Store</title>
                         </Head>
                         <h3>| {product.name}</h3>
                         <p className={styles.color}>Color: {product.color}</p>

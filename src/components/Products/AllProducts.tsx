@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Content from '../Content/Content'
@@ -75,6 +76,9 @@ export default function AllProducts() {
 
     return <Content id="allProducts">
         <>
+            <Head>
+                <title>All Products | Sapiens Music Store</title>
+            </Head>
             <h3>| All products</h3>
             <div className={styles.filterBy}>
                 <h4 onClick={() => {
@@ -90,19 +94,16 @@ export default function AllProducts() {
                                 return (<span key={index} onClick={() => filterProducts(item.id, "category")}>{item.name}</span>)
                             })
                         }
-                        <span onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
+                        <span className={styles.clearFilter} onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
                     </div>
                     <h5>Brand:</h5>
                     <div className={styles.filterTag}>
                         {
                             brands && brands.map((item: any, index: number) => {
-                                return (
-                                <div key={index}>
-                                    <span onClick={() => filterProducts(item.id, "brand")}>{item.name}</span>
-                                </div>)
+                                return (<span key={index} onClick={() => filterProducts(item.id, "brand")}>{item.name}</span>)
                             })
                         }
-                        <span onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
+                        <span className={styles.clearFilter} onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
                     </div>
                 </>
                 }
