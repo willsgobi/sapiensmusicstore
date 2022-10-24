@@ -10,6 +10,7 @@ export default function AllProducts() {
     const [products, setProducts] = useState<any>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [loadingFilters, setLoadingFilters] = useState<boolean>(false)
+    const [showClearFilters, setShowClearFilters] = useState<boolean>(false)
     const [filters, setFilters] = useState<boolean>(false)
     const [filteredList, setFilteredList] = useState(null)
     const [productsList, setProductsList] = useState(null)
@@ -83,7 +84,10 @@ export default function AllProducts() {
             <div className={styles.filterBy}>
                 <h4 onClick={() => {
                     getFilterDatas()
-                }}>| Open filters</h4>
+                }}>| Open filters {showClearFilters && <span className={styles.clearFilter} onClick={() => {
+                    filterProducts(0, "clear")
+                    setShowClearFilters(false)
+                    }}>Clear Filter</span>}</h4>
                 {   loadingFilters ? <div><span>Loading filter data...</span></div> :
                     filters && 
                     <>
@@ -91,19 +95,23 @@ export default function AllProducts() {
                     <div className={styles.filterTag}>
                         {
                             categories && categories.map((item: any, index: any) => {
-                                return (<span key={index} onClick={() => filterProducts(item.id, "category")}>{item.name}</span>)
+                                return (<span className={styles.filters} key={index} onClick={() => {
+                                    setShowClearFilters(true);
+                                    filterProducts(item.id, "category")
+                                }}>{item.name}</span>)
                             })
-                        }
-                        <span className={styles.clearFilter} onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
+                        }                        
                     </div>
                     <h5>Brand:</h5>
                     <div className={styles.filterTag}>
                         {
                             brands && brands.map((item: any, index: number) => {
-                                return (<span key={index} onClick={() => filterProducts(item.id, "brand")}>{item.name}</span>)
+                                return (<span className={styles.filters} key={index} onClick={() => {
+                                    setShowClearFilters(true);
+                                    filterProducts(item.id, "brand")
+                                }}>{item.name}</span>)                                
                             })
-                        }
-                        <span className={styles.clearFilter} onClick={() => filterProducts(0, "clear")}>Clear Filter</span>
+                        }                        
                     </div>
                 </>
                 }

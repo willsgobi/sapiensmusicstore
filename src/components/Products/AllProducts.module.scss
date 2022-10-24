@@ -25,27 +25,26 @@
 .filterTag {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-
-    > span {
-        text-align: center;
-        border: 1px solid #333;
-        border-radius: 30px;
-        padding: 10px;
-        margin: 10px 10px;
-        min-width: 100px;
-        cursor: pointer;
-        transition: .4s;
-        font-size: .8rem;
-
-        &:hover {
-            background-color: #333;
-            color: white;
-        }
-    }
-
+    align-items: center;  
     padding-bottom: 10px;
     padding-left: 20px;
+}
+
+.filters, .clearFilter {
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px 10px;
+    min-width: 100px;
+    cursor: pointer;
+    transition: .4s;
+    font-size: .8rem;
+
+    &:hover {
+        background-color: #333;
+        color: white;
+    }
 }
 
 .clearFilter {
