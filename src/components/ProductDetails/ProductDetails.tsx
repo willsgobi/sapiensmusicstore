@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react"
@@ -12,7 +14,8 @@ export default function ProductDetails(props: ProductDetailsProps) {
 
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const [selectedImage, setSelectedImage] = useState<string>()
+    const [selectedImage, setSelectedImage] = useState<string>();
+    const [showFullImage, setShowFullImage] = useState<boolean>();
 
     async function getProductById() {
         try {
@@ -21,7 +24,7 @@ export default function ProductDetails(props: ProductDetailsProps) {
 
             setProduct(json);
             setSelectedImage(json.images[0])
-        } catch(e) {
+        } catch (e) {
             console.log(e.message)
         } finally {
             setLoading(false)
@@ -32,11 +35,11 @@ export default function ProductDetails(props: ProductDetailsProps) {
         getProductById();
     }, [])
 
-    if(props.id == null) {
+    if (props.id == null) {
         return <Content id="notFound"><p>Product Not Found!</p></Content>
     }
 
-    if(loading) return <Content id="loading"><p>Loading...</p></Content>
+    if (loading) return <Content id="loading"><p>Loading...</p></Content>
 
     return (
         <Content id="productDetails">
@@ -58,13 +61,16 @@ export default function ProductDetails(props: ProductDetailsProps) {
                                         })
                                     }
                                 </div>
-                                <div className={styles.selectedImage}>
-                                    <img src={selectedImage} alt="product"/>
-                                </div>                            
+                                <div className={styles.selectedImage} onClick={() => {
+                                    setShowFullImage(true)
+                                    document.body.style.overflow = "hidden";
+                                }}>
+                                    <img src={selectedImage} alt="product" />
+                                </div>
                             </div>
                             <div className={styles.buy}>
                                 <p className={styles.price}>$ {product.price.toFixed(2)}</p>
-                                <button className={styles.buyNow}>Buy now</button>                                    
+                                <button className={styles.buyNow}>Buy now</button>
                                 <button className={styles.wishList}>Add to wishlist</button>
                             </div>
                         </div>
@@ -80,9 +86,21 @@ export default function ProductDetails(props: ProductDetailsProps) {
                         <Link href={"/products"}>
                             <span className={styles.backToList}>Back to list</span>
                         </Link>
+
+                        {
+                            showFullImage && (
+                                <div className={styles.fullImage}>
+                                    <div className={styles.fullImageClose} onClick={() => {
+                                        document.body.style.overflow = "scroll";
+                                        setShowFullImage(false)
+                                    }}></div>
+                                    <img src={selectedImage} alt="Image Selected" />
+                                </div>
+                            )
+                        }
                     </div>
                 )
             }
-        </Content>
+        </Content >
     )
 }
