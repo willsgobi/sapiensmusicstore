@@ -9,6 +9,7 @@ export default function About() {
             <Head>
                 <title>About | Sapiens Music Store</title>
             </Head>
+                <h3>| About Us</h3>
                 <p style={{ whiteSpace: "pre-line" }}>{Text("about", "pt-br")}</p>
             </>
         </Content>
